@@ -95,11 +95,117 @@ export function Search(){
 }
 
 
-
-
-
 import { BsSearch } from "react-icons/bs";
 import { Form } from "react-bootstrap";
+
+
+
+
+
+
+
+
+
+
+
+
+import { useParams } from "react-router";
+import * as db from "../../Database";
+export function AssignmentsDataDriven() {
+   
+    const { cid } = useParams();
+    const assignments = db.assignments;    
+  
+    // const linkPath = `/Kambaz/Courses/${cid}/${assignment._id}/AssignmentEditor`;
+    // const isActive = pathname === linkPath;
+
+  
+  return (
+
+    // <div id="wd-assignments" className="p-4">
+      <ListGroup id="wd-modules" className="rounded-0">
+
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <InputGroup className="w-50">
+          <InputGroup.Text><BsSearch /></InputGroup.Text>
+          <Form.Control placeholder="Search ..." />
+        </InputGroup>
+
+        <div>
+          <Button variant="secondary" className="me-2">
+            <BsPlus className="me-1" /> Group
+          </Button>
+          <Button variant="danger">
+            <BsPlus className="me-1" /> Assignment
+          </Button>
+        </div>
+      </div>
+      
+        <div className="bg-light px-3 py-2 mb-2 border rounded d-flex justify-content-between align-items-center">
+        <span className="fw-bold">ASSIGNMENTS</span>
+        <span className="px-2 py-1 border rounded-pill text-black small">40% of Total</span>
+      </div>
+
+        <ListGroup.Item className="wd-module p-0 mb-5 fs-5 border-gray">
+          <div className="wd-title p-3 ps-2 bg-secondary text-white">
+            <BsGripVertical className="me-2 fs-3" /> Week 1
+          </div>
+
+          <ListGroup className="wd-lessons rounded-0">
+
+        {assignments
+          .filter((assignment: any) => assignment.course === cid)
+          .map((assignment: any) => (
+          
+          
+
+          // here begins the list group item being that the other buttons were already added
+          <Link to={`/Kambaz/Courses/${cid}/${assignment._id}/AssignmentEditor`}
+          className="text-decoration-none text-dark">
+          <ListGroup.Item 
+
+          className="wd-lesson p-3 ps-1 border-start border-5 border-success border-top-0 border-end-0 border-bottom-0 bg-white"
+                style={{ borderBottom: "1px solid #dee2e6" }} >
+                <div className="d-flex justify-content-between">
+                  <div className="d-flex">
+                    <div className="me-3 d-flex align-items-start">
+                      <BsGripVertical className="fs-4 me-1" />
+                      <GreenHwButton />
+                    </div>
+                    <div>
+                      <div className="fw-bold">{assignment._id+" - "+assignment.title}</div>
+                      <p className="mb-1 small">
+                        <span className="text-danger">Multiple Modules</span>
+                        <span className="text-dark"> | Not available until May 13 at 12:00am</span>
+                      </p>
+                      <p className="mb-0 text-muted small">
+                        Due May 20 at 11:59pm | 100 pts
+                      </p>
+                    </div>
+                  </div>
+                  <div className="d-flex align-items-start">
+                    <BsThreeDotsVertical className="bs"/>
+                    <FaCheckCircle className="text-success mt-1" />
+                  </div>
+                </div>
+
+
+                </ListGroup.Item>
+                </Link>))}
+                </ListGroup>
+                
+                </ListGroup.Item>
+
+                </ListGroup>
+                
+          );}
+          
+
+
+
+
+
+
 
 export function AssignmentWriting() {
   return (

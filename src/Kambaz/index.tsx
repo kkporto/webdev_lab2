@@ -5,11 +5,18 @@ import { KambazNavigation } from "./Courses/Navigation";
 import Courses from "./Courses";
 import { AssignmentEditor } from "./Courses/AssignmentEditor";
 
+
 import "./styles.css"
 
 
 
+
+
+
 export default function Kambaz() {
+
+
+
   return (
     <div id="wd-kambaz">
 
@@ -24,7 +31,8 @@ export default function Kambaz() {
         <Route path="/Calendar" element={<h1>Calendar</h1>} />
         <Route path="/Inbox" element={<h1>Inbox</h1>} />
         
-        <Route path="/Courses/AssignmentEditor/*" element={<AssignmentEditor />} />
+        <Route path="/Courses/:cid/:aid/AssignmentEditor/*" element={<AssignmentEditor />} />
+
       </Routes>
     </div>
 </div>

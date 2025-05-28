@@ -1,14 +1,33 @@
 import { Form, Button, Row, Col } from "react-bootstrap";
 
+import { useParams } from "react-router";
+import * as db from "../../Database";
+
+
+
+
 export function AssignmentEditor() {
+  const { aid } = useParams(); // gets assignment ID from URL
+  const assignments = db.assignments;
+
+  const assignment = assignments.find((a) => a._id === aid);
+
+   if (!assignment) {
+    return <div> Issue with loading page for assignment {aid}</div>;
+  }
+
   return (
+    <>
+
     <div className="p-4">
       <h4>Edit Assignment</h4>
 
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Assignment Name</Form.Label>
-          <Form.Control type="text" defaultValue="A1" />
+          <Form.Control type="text" defaultValue= {assignment._id} />
+           {/* + " - " + assignment.title} /> */}
+   
         </Form.Group>
 
         <Form.Group className="mb-4">
@@ -100,7 +119,10 @@ export function AssignmentEditor() {
           <Button variant="secondary">Cancel</Button>
           <Button variant="danger">Save</Button>
         </div>
-      </Form>
-    </div>
+      </Form> 
+    </div> 
+      {/* ))} */}
+      </>
+
   );
 }

@@ -15,6 +15,7 @@ export default function Courses() {
 
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);
+  // const assignment = assignments.find((assignment) => assignment._id === aid);
   const { pathname } = useLocation();
 
   return (
