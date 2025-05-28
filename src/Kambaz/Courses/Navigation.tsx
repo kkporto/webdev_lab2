@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
@@ -9,27 +9,53 @@ import {ListGroup} from 'react-bootstrap';
 
 
 
-
-
 export function CourseNavigation() {
+  const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades", "People"];
+  const { cid } = useParams(); 
+  const { pathname } = useLocation(); 
+
   return (
-    <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
-      <Link to="/Kambaz/Courses/1234/Home" id="wd-course-home-link"
-        className="list-group-item active border border-0"> Home </Link>
-      <Link to="/Kambaz/Courses/1234/Modules" id="wd-course-modules-link"
-        className="list-group-item text-danger border border-0"> Modules </Link>
-      <Link to="/Kambaz/Courses/1234/Piazza" id="wd-course-piazza-link"
-        className="list-group-item text-danger border border-0"> Piazza </Link>
-      <Link to="/Kambaz/Courses/1234/Zoom" id="wd-course-zoom-link"
-        className="list-group-item text-danger border border-0"> Zoom </Link>
-      <Link to="/Kambaz/Courses/1234/Assignments" id="wd-course-quizzes-link"
-        className="list-group-item text-danger border border-0"> Assignments </Link>
-      <Link to="/Kambaz/Courses/1234/Quizzes" id="wd-course-assignments-link"
-        className="list-group-item text-danger border border-0"> Quizzes </Link>
-      <Link to="/Kambaz/Courses/1234/People" id="wd-course-people-link"
-        className="list-group-item text-danger border border-0" > People </Link>
+    <div className="list-group wd fs-5 rounded-0">
+      {links.map((link, index) => {
+        const linkPath = `/Kambaz/Courses/${cid}/${link}`;
+        const isActive = pathname === linkPath;
+
+        return (
+          <Link
+            key={index}
+            to={linkPath}
+            className={`list-group-item border-0 ${isActive ? "active" : "text-danger"}`}
+          >
+            {link}
+          </Link>
+        );
+      })}
     </div>
-);}
+  );
+}
+
+// old assignments from lab1/2
+
+//   return (
+//     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
+//       <Link to={pathname+(links[0])} id="wd-course-home-link"
+//         className="list-group-item active border border-0"> {links[0]} </Link>
+
+//       <Link to="/Kambaz/Courses/1234/Modules" id="wd-course-modules-link"
+//         className="list-group-item text-danger border border-0"> Modules </Link>
+//       <Link to="/Kambaz/Courses/1234/Piazza" id="wd-course-piazza-link"
+//         className="list-group-item text-danger border border-0"> Piazza </Link>
+//       <Link to="/Kambaz/Courses/1234/Zoom" id="wd-course-zoom-link"
+//         className="list-group-item text-danger border border-0"> Zoom </Link>
+
+//       <Link to={pathname+"/"+(links[4])} id="wd-course-quizzes-link"
+//         className="list-group-item text-danger border border-0"> Assignments </Link>
+//       <Link to="/Kambaz/Courses/1234/Quizzes" id="wd-course-assignments-link"
+//         className="list-group-item text-danger border border-0"> Quizzes </Link>
+//       <Link to="/Kambaz/Courses/1234/People" id="wd-course-people-link"
+//         className="list-group-item text-danger border border-0" > People </Link>
+//     </div>
+// );}
 
 
 

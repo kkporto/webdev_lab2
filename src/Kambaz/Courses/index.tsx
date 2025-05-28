@@ -1,5 +1,5 @@
 import { courses } from "../Database";
-import { Route, Routes, useParams } from "react-router";
+import { Route, Routes, useParams, useLocation } from "react-router";
 import { FaAlignJustify } from "react-icons/fa";
 
 import { CourseNavigation } from "./Navigation";
@@ -15,6 +15,7 @@ export default function Courses() {
 
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);
+  const { pathname } = useLocation();
 
   return (
 
@@ -22,7 +23,7 @@ export default function Courses() {
   <h2 className="text-danger">
       <FaAlignJustify className="me-4 fs-4 mb-1" />
       
-      {course && course.name}
+      {course && course.name} &gt; {pathname.split("/")[4]}
       {/* Course 1234  */}
       </h2> <hr />
   <div className="d-flex">
