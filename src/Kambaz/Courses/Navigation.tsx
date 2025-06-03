@@ -34,30 +34,6 @@ export function CourseNavigation() {
   );
 }
 
-// old assignments from lab1/2
-
-//   return (
-//     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
-//       <Link to={pathname+(links[0])} id="wd-course-home-link"
-//         className="list-group-item active border border-0"> {links[0]} </Link>
-
-//       <Link to="/Kambaz/Courses/1234/Modules" id="wd-course-modules-link"
-//         className="list-group-item text-danger border border-0"> Modules </Link>
-//       <Link to="/Kambaz/Courses/1234/Piazza" id="wd-course-piazza-link"
-//         className="list-group-item text-danger border border-0"> Piazza </Link>
-//       <Link to="/Kambaz/Courses/1234/Zoom" id="wd-course-zoom-link"
-//         className="list-group-item text-danger border border-0"> Zoom </Link>
-
-//       <Link to={pathname+"/"+(links[4])} id="wd-course-quizzes-link"
-//         className="list-group-item text-danger border border-0"> Assignments </Link>
-//       <Link to="/Kambaz/Courses/1234/Quizzes" id="wd-course-assignments-link"
-//         className="list-group-item text-danger border border-0"> Quizzes </Link>
-//       <Link to="/Kambaz/Courses/1234/People" id="wd-course-people-link"
-//         className="list-group-item text-danger border border-0" > People </Link>
-//     </div>
-// );}
-
-
 
 export function KambazNavigation() {
   
@@ -96,39 +72,6 @@ export function KambazNavigation() {
 
 
 
-
-
-    {/* <ListGroup.Item to="/Kambaz/Account" as={Link}
-       className="text-center border-0 bg-black text-white">
-       <FaRegCircleUser className="fs-1 text text-white" /><br />
-       Account </ListGroup.Item>
-    <ListGroup.Item to="/Kambaz/Dashboard" as={Link}
-       className="text-center border-0
-                  bg-white text-danger">
-       <AiOutlineDashboard className="fs-1 text-danger" /><br />
-       Dashboard </ListGroup.Item>
-    <ListGroup.Item to="/Kambaz/Dashboard" as={Link}
-       className="text-white
-                  bg-black text-center border-0">
-       <LiaBookSolid className="fs-1 text-danger" /><br />
-       Courses </ListGroup.Item>
-
-      
-    <ListGroup.Item to="/Kambaz/Calendar" as={Link}
-       className="text-white
-                  bg-black text-center border-0">
-       <IoCalendarOutline className="fs-1 text-danger" /><br />
-       Calendar </ListGroup.Item>
-    <ListGroup.Item to="/Kambaz/Inbox" as={Link}
-       className="text-white
-                  bg-black text-center border-0">
-       <FaInbox className="fs-1 text-danger" /><br />
-       Inbox </ListGroup.Item>
-    <ListGroup.Item to="/Labs" as={Link}
-       className="text-white
-                  bg-black text-center border-0">
-       <ImLab className="fs-1 text-danger" /><br />
-       Labs </ListGroup.Item> */}
 
 
    </ListGroup>

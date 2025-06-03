@@ -103,22 +103,12 @@ import { Form } from "react-bootstrap";
 
 
 
-
-
-
-
-
-
 import { useParams } from "react-router";
 import * as db from "../../Database";
 export function AssignmentsDataDriven() {
    
     const { cid } = useParams();
     const assignments = db.assignments;    
-  
-    // const linkPath = `/Kambaz/Courses/${cid}/${assignment._id}/AssignmentEditor`;
-    // const isActive = pathname === linkPath;
-
   
   return (
 

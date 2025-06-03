@@ -13,7 +13,6 @@ export function LessonControlButtons() {
 export function ModuleControlButtons() {
   return (
     <div className="float-end">
-      {/* <GreenCheckmark />
-      <IoEllipsisVertical className="fs-4" /> */}
+      
       <BsPlus className="bs" />
     </div> );}
