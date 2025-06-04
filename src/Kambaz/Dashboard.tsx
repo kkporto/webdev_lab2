@@ -2,7 +2,8 @@
 import { Link } from "react-router-dom";
 // import * as db from "./Database";
 import {Card, Row, Col, Button, FormControl} from 'react-bootstrap';
-
+import { useSelector } from "react-redux";
+import * as db from "./Database";
 // import { v4 as uuidv4 } from 'uuid';
 
 
@@ -12,8 +13,12 @@ export default function Dashboard(
   deleteCourse, updateCourse }: {
   courses: any[]; course: any; setCourse: (course: any) => void;
   addNewCourse: () => void; deleteCourse: (course: any) => void;
-  updateCourse: () => void; }) {
-  
+  updateCourse: () => void; }) 
+
+  {
+
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const { enrollments } = db;  
 
   // const [courses, setCourses] = useState<any[]>(db.courses);
 
@@ -76,7 +81,17 @@ export default function Dashboard(
  <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
  <div id="wd-dashboard-courses">
   <Row xs={1} md={5} className="g-4">
-    {courses.map((course) => (
+    {courses
+    .filter((course) =>
+      enrollments.some(
+        (enrollment) =>
+          enrollment.user === currentUser._id &&
+          enrollment.course === course._id
+         ))
+
+    
+    
+    .map((course) => (
    <Col className="wd-dashboard-course" style={{ width: "300px" }}>
     <Card>
         <Link to={`/Kambaz/Courses/${course._id}/Home`}
