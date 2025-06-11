@@ -1,18 +1,3 @@
-// import { Link } from 'react-router-dom'; // <-- This is the missing import
- 
-// export default function TOC() {
-//   return (
-//     <ul>
-//       {/* <li><Link to="/Lab 1">Labs</Link></li> */}
-//        <li><Link to="/Labs/allLabs">Labs main page</Link></li>
-//       <li><Link to="/Labs/Lab1">Assignment 1</Link></li>
-//       <li><Link to="/Labs/Lab2">Assignment 2</Link></li>
-//       <li><Link to="/Labs/Lab3">Assignment 3</Link></li>
-//       <li><Link to="/Kambaz">Kambaz</Link></li>
-//     </ul>
-//   );
-// }
-
 import Nav from "react-bootstrap/Nav";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
@@ -32,6 +17,8 @@ const { pathname } = useLocation();
           active={pathname.includes("Lab3")}> Lab 3 </Nav.Link> </Nav.Item>
       <Nav.Item> <Nav.Link as={Link} to="/Labs/Lab4" id="wd-a4"
           active={pathname.includes("Lab4")}> Lab 4 </Nav.Link> </Nav.Item>
+      {/* <Nav.Item> <Nav.Link as={Link} to="/Labs/Lab5" id="wd-a5"
+          active={pathname.includes("Lab5")}> Lab 5 </Nav.Link> </Nav.Item> */}
 
      <Nav.Item>
        <Nav.Link to="/Kambaz" as={Link}>Kambaz</Nav.Link>
