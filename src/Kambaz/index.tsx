@@ -1,3 +1,5 @@
+import Session from "./Account/Session";
+
 import { Routes, Route, Navigate } from "react-router";
 import Account from "./Account";
 import Dashboard from "./Dashboard";
@@ -42,6 +44,8 @@ export default function Kambaz() {
 
 
   return (
+    
+    <Session>
     <div id="wd-kambaz">
 
         <KambazNavigation />
@@ -71,7 +75,7 @@ export default function Kambaz() {
     </div>
 </div>
 
-
+</Session>
 );}
 
 
