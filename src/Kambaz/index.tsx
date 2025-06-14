@@ -19,12 +19,21 @@ import { useEffect } from "react";
 import "./styles.css"
 
 
+import * as courseClient from "./Courses/client";
+
 
 export default function Kambaz() {
 
   const [courses, setCourses] = useState<any[]>([]);
   
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+
+
+    const deleteCourse = async (courseId: string) => {
+    const status = await courseClient.deleteCourse(courseId);
+    setCourses(courses.filter((course) => course._id !== courseId));
+  };
+
   const fetchCourses = async () => {
     try {
       const courses = await userClient.findMyCourses();
@@ -56,10 +65,12 @@ export default function Kambaz() {
   // };
 
 
-  const deleteCourse = (courseId: any) => {
-    setCourses(courses.filter((course) => course._id !== courseId));
-  };
-  const updateCourse = () => {
+  // const deleteCourse = (courseId: any) => {
+  //   setCourses(courses.filter((course) => course._id !== courseId));
+  // };
+  const updateCourse = async () => {
+    await courseClient.updateCourse(course);
+
     setCourses(
       courses.map((c) => {
         if (c._id === course._id) {
