@@ -31,6 +31,8 @@ export default function Kambaz() {
 
     const deleteCourse = async (courseId: string) => {
     const status = await courseClient.deleteCourse(courseId);
+    if (status.success) {console.log("Delete status:", status);} //att. to fix error from unused status
+
     setCourses(courses.filter((course) => course._id !== courseId));
   };
 
@@ -93,7 +95,7 @@ export default function Kambaz() {
       <Routes>
         <Route path="/" element={<Navigate to="Account" />} />
         <Route path="/Account/*" element={<Account />} />
-        {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
+
         <Route path="Dashboard" element={
                     <Dashboard
                       courses={courses}
