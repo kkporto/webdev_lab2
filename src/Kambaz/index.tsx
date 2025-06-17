@@ -20,7 +20,7 @@ import "./styles.css"
 
 
 import * as courseClient from "./Courses/client";
-
+import Assignments from "./Courses/Assignments";
 
 export default function Kambaz() {
 
@@ -112,6 +112,8 @@ export default function Kambaz() {
         <Route path="/Inbox" element={<h1>Inbox</h1>} />
         
         <Route path="/Courses/:cid/:aid/AssignmentEditor/*" element={<AssignmentEditor />} />
+        <Route path="/Courses/:cid/Assignments" element={<Assignments />} />
+        
 
       </Routes>
     </div>

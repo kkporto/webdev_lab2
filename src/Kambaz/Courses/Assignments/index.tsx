@@ -7,33 +7,13 @@
 import { AssignmentsDataDriven } from "./Tokens.tsx";
 export default function Assignments() {
   
-  // const [assignmentName, setAssignmentName] = useState("");
-  // const { assignments } = useSelector((state: any) => state.assignmentsReducer);
-  // const dispatch = useDispatch();
-
-  
   return (
-
-        
-
-
-     <div id="wd-assignments">
-
-
-    </div>
-);}
-
-
-// {assignments
-//           .filter((assignment: any) => assignment.course === cid)
-//           .map((assignment: any) => (
-
+    <div id="wd-assignments">
       <AssignmentsDataDriven/>
+    </div>
 
-      // <AssignmentDataDriven assignmentId={assignment._id}
-      //           deleteAssignment={(assignmentId) => {
-      //             dispatch(deleteAssignment(assignmentId));
-      //           }}
-      //           editAssignment={(assignmentId) => dispatch(editAssignment(assignmentId))} />
+  );
+}
 
-              // }
+
+
