@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function Modules() {
 
+  // const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const { cid } = useParams();
   const [moduleName, setModuleName] = useState("");
