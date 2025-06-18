@@ -12,19 +12,36 @@ import { v4 as uuidv4 } from "uuid";
 
 
 import "./styles.css"
-
+import { useSelector } from "react-redux";
 
 
 export default function Kambaz() {
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const [courses, setCourses] = useState<any[]>(db.courses);
   const [course, setCourse] = useState<any>({
-    _id: "1234", name: "New Course", number: "New Number",
+    _id: uuidv4(), name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
+
   const addNewCourse = () => {
-    setCourses([...courses, { ...course, _id: uuidv4() }]);
+    const newCourse = { ...course, _id: uuidv4() };
+    setCourses([...courses, newCourse ]);
+
+
+    db.enrollments.push({
+        _id: uuidv4(),
+        user: currentUser._id,
+        course: newCourse._id,
+    });
+
+    console.log("Enrolled courses for current user:",
+    db.enrollments
+      .filter((enr) => enr.user === currentUser?._id)
+      .map((enr) => enr.course)
+  );
   };
+
   const deleteCourse = (courseId: any) => {
     setCourses(courses.filter((course) => course._id !== courseId));
   };
