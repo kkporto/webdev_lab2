@@ -9,7 +9,7 @@ import { useParams } from "react-router";
 
 // import { v4 as uuidv4 } from "uuid";
 
-import { addModule, editModule, updateModule, deleteModule }
+import { addModule, editModule, updateModule, deleteModule, addLessonToModule, deleteLesson }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -59,7 +59,9 @@ export default function Modules() {
                   deleteModule={(moduleId) => {
                     dispatch(deleteModule(moduleId));
                   }}
-                  editModule={(moduleId) => dispatch(editModule(moduleId))} />
+                  editModule={(moduleId) => dispatch(editModule(moduleId))} 
+                  addLessonToModule={(moduleId) => dispatch(addLessonToModule(moduleId))} 
+                  />
 
 
             </div>
@@ -67,7 +69,16 @@ export default function Modules() {
               <ListGroup className="wd-lessons rounded-0">
                 {module.lessons.map((lesson: any) => (
                   <ListGroup.Item className="wd-lesson p-3 ps-1">
-                    <BsGripVertical className="me-2 fs-3" /> {lesson.name} <LessonControlButtons />
+                    <BsGripVertical className="me-2 fs-3" /> {lesson.name} 
+                    
+                    <LessonControlButtons 
+                        moduleId={module._id}
+                        lessonId={lesson._id}
+                        deleteLesson={(moduleId, lessonId) => {
+                          dispatch(deleteLesson({ moduleId, lessonId }));
+                        }
+                      }
+                      />
                   </ListGroup.Item>
                 ))}
                 </ListGroup>) 
