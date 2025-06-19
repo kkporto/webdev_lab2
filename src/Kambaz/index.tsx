@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 import "./styles.css"
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./Account/ProtectedRoute";
+// import { addEnrollment } from "./Courses/People/reducer";
 
 export default function Kambaz() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -27,7 +28,6 @@ export default function Kambaz() {
   const addNewCourse = () => {
     const newCourse = { ...course, _id: uuidv4() };
     setCourses([...courses, newCourse ]);
-
 
     db.enrollments.push({
         _id: uuidv4(),
@@ -58,6 +58,44 @@ export default function Kambaz() {
   };
 
 
+
+  //   const addNewEnrollment = (courseId: any) => {
+  //   //   const newEnrollment = { ...enrollment, _id: uuidv4(), course: courseId };
+  //   //   setEnrollments([...enrollments, newEnrollment ]);
+
+  //   //   db.enrollments.push({
+  //   //       _id: uuidv4(),
+  //   //       user: currentUser._id,
+  //   //       course: newCourse._id,
+  //   //   });
+
+  //   //   console.log("Enrolled courses for current user:",
+  //   //   db.enrollments
+  //   //     .filter((enr) => enr.user === currentUser?._id)
+  //   //     .map((enr) => enr.course)
+  //   // );
+  // };
+
+
+  
+  // const deleteEnrollment = (courseId: any) => {
+    
+  //   setEnrollments(enrollments.filter((enrollment) => {(enrollment.course !== courseId)&&(enrollment.user !== currentUser)}));
+
+
+  //   // db.enrollments
+  //   //   .filter((enr) => {(enr.user === currentUser?._id)&&()}
+  // }
+
+
+  // const [enrollments, setEnrollments] = useState<any[]>(db.enrollments);
+  // const [enrollment, setEnrollment] = useState<any>({
+  //   _id: uuidv4(),
+  //   course: uuidv4(), 
+  //   user: currentUser,
+  // });
+
+
   return (
     <div id="wd-kambaz">
 
@@ -76,6 +114,11 @@ export default function Kambaz() {
                       addNewCourse={addNewCourse}
                       deleteCourse={deleteCourse}
                       updateCourse={updateCourse}
+
+                      // enrollments={enrollments}
+                      // enrollment={enrollment}
+                      // addEnrollment={addEnrollment}
+                      // deleteEnrollment={deleteEnrollment}
                       
                       /> </ProtectedRoute> } />
                   

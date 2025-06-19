@@ -1,0 +1,39 @@
+[
+  {
+  "_id": "RS101",
+  "quizType": "Graded Quiz",
+  "points": 0,
+  "assignmentGroup": "Quizzes",
+  "shuffleAnswers": true,
+  "timeLimit": 20,
+  "multipleAttempts": false,
+  "maxAttempts": 1,
+  "showCorrectAnswers": null,
+  "accessCode": "",
+  "oneQuestionAtATime": true,
+  "webcamRequired": false,
+  "lockQuestionsAfterAnswering": false,
+  "dueDate": null,
+  "availableDate": null,
+  "untilDate": null,
+    
+  "questions": [
+      {
+        "_id": "L201",
+        "prompt": "Rocket Fuel",
+        "type": "One choice",
+        "correctAnswer": "",
+        "choices": [
+            {"correct": "false",
+            "answer": "answer1234"},
+            {"correct": "false",
+            "answer": "answer12345"},
+            {"correct": "true",
+            "answer": "answer12346"}
+            ]
+        }
+    ]
+    
+  },
+{}
+]

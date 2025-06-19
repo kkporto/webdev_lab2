@@ -9,6 +9,10 @@ const enrollmentsSlice = createSlice({
   initialState,
   reducers: {
 
+
+
+
+
     addEnrollment: (state, { payload }) => {
     const { user, course } = payload;
 
@@ -22,20 +26,31 @@ const enrollmentsSlice = createSlice({
         course,
         user,
         };
-        state.enrollments.push(newEnrollment);
+        // state.enrollments.push(newEnrollment);
+        
+      state.enrollments = [...state.enrollments, newEnrollment] as any;
     }
+
     },
 
-
     deleteEnrollment: (state, { payload }) => {
-    const { user, course } = payload;
+    
+    const { courseId, currentUser  } = payload;
 
+    console.log("**** Attempting to delete enrollment with:");
+    console.log("courseId:", courseId);
+    console.log("currentUser:", currentUser);
+    console.log("**** Enrollments before:", [...state.enrollments]);
+    
     state.enrollments = state.enrollments.filter(
-        (e) => !(e.user === user && e.course === course)
-    );
-    } 
+        (m: any) => (m.course !== courseId || m.user !== currentUser));
+    
+    
+  console.log("**** Enrollments after:", [...state.enrollments]);
+    },
 
-    }   
+    } 
+      
   }
 );
 
