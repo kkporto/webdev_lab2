@@ -33,6 +33,9 @@ export function GreenHwButton() {
 export default function Quizzes() {
   const { cid } = useParams();
   const dispatch = useDispatch();
+
+  console.log(dispatch)
+
   const navigate = useNavigate();
   console.log(navigate); //cancel out unused error 
 
