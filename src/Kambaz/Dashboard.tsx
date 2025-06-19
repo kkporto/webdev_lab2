@@ -25,7 +25,7 @@ export default function Dashboard(
   {
 
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  // const { enrollments } = db;  
+
   const enrollments = useSelector((state: any) => state.enrollmentsReducer.enrollments);
 
   console.log("Current user ID:", currentUser?._id);
