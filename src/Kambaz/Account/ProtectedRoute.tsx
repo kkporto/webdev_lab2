@@ -7,3 +7,14 @@ export default function ProtectedRoute({ children }: { children: any }) {
   } else {
     return <Navigate to="/Kambaz/Account/Signin" />;
 }}
+
+
+
+export function ProtectedRouteFaculty({ children }: { children: any }) {
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  if (currentUser?.role === "FACULTY" ) {
+    return children;
+  } else {
+    return;
+}}
+

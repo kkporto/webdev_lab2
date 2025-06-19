@@ -32,18 +32,9 @@ const modulesSlice = createSlice({
       ) as any;
     },
 
-    // addLesson: (state, { payload: module }) => {
-    //   const newLesson: any = {
-    //     _id: uuidv4(),
-    //     name: module.name,
-    //     description: "Module description",
-    //     module: "Adding module",
-    //   };
-    //   state.module.lessons = [...state.modules, newModule] as any;
-    // },
+    
 
     addLessonToModule: (state, { payload: moduleId }) => {
-      // const { _id: moduleId } = module;
 
       const targetModule = state.modules.find((m: any) => m._id === moduleId);
       if (targetModule) {

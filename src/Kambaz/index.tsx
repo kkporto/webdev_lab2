@@ -75,7 +75,9 @@ export default function Kambaz() {
                       setCourse={setCourse}
                       addNewCourse={addNewCourse}
                       deleteCourse={deleteCourse}
-                      updateCourse={updateCourse}/> </ProtectedRoute> } />
+                      updateCourse={updateCourse}
+                      
+                      /> </ProtectedRoute> } />
                   
 
         <Route path="/Courses/:cid/*" element={ <ProtectedRoute>

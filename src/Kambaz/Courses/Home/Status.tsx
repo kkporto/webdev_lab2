@@ -11,6 +11,7 @@ export default function CourseStatus() {
  return (
    <div id="wd-course-status" style={{ width: "350px" }}>
      <h2>Course Status</h2>
+     
      <div className="d-flex">
        <div className="w-50 pe-1">
          <Button variant="secondary" size="lg" className="w-100 text-nowrap ">
@@ -37,9 +38,6 @@ export default function CourseStatus() {
        <FaBell className="fa" /> View Course Notifications </Button>
 
 
-
-
-     {/* Complete the rest of the buttons */}
    </div> );}
 
 

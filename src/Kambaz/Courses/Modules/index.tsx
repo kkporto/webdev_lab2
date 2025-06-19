@@ -5,9 +5,6 @@ import ModulesControls from './ModulesControls';
 import { useState } from 'react';
 
 import { useParams } from "react-router";
-// import * as db from "../../Database";
-
-// import { v4 as uuidv4 } from "uuid";
 
 import { addModule, editModule, updateModule, deleteModule, addLessonToModule, deleteLesson }
   from "./reducer";
@@ -15,31 +12,39 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function Modules() {
 
-  // const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const { cid } = useParams();
   const [moduleName, setModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
 
+  
+  console.log("Current user role 222222:", currentUser?.role);
+  console.log("Current user role 223332:", currentUser?.role);
+
   return (
-      
 
 
     <div className="d-flex flex-column">
-      <ModulesControls moduleName={moduleName} setModuleName={setModuleName}
+    {currentUser?.role === "FACULTY" && (
+      <ModulesControls
+        moduleName={moduleName}
+        setModuleName={setModuleName}
         addModule={() => {
           dispatch(addModule({ name: moduleName, course: cid }));
           setModuleName("");
-        }} />
-
+        }}
+      />
+    )}
+      
     <hr/>
 
       <ListGroup id="wd-modules" className="rounded-0">
         {modules
           .filter((module: any) => module.course === cid)
           .map((module: any) => (
-          <ListGroup.Item className="wd-module p-0 mb-5 fs-5 border-gray">
+          <ListGroup.Item  key={module._id} className="wd-module p-0 mb-5 fs-5 border-gray">
             <div className="wd-title p-3 ps-2 bg-secondary">
               <BsGripVertical className="me-2 fs-3" /> 
               {/* {module.name}  */}
@@ -56,6 +61,8 @@ export default function Modules() {
                defaultValue={module.name}/>
       )}
 
+
+        {currentUser?.role === "FACULTY" && ( 
         <ModuleControlButtons moduleId={module._id}
                   deleteModule={(moduleId) => {
                     dispatch(deleteModule(moduleId));
@@ -63,23 +70,25 @@ export default function Modules() {
                   editModule={(moduleId) => dispatch(editModule(moduleId))} 
                   addLessonToModule={(moduleId) => dispatch(addLessonToModule(moduleId))} 
                   />
-
+                )}
 
             </div>
             {module.lessons && (
               <ListGroup className="wd-lessons rounded-0">
                 {module.lessons.map((lesson: any) => (
-                  <ListGroup.Item className="wd-lesson p-3 ps-1">
+                  <ListGroup.Item key={lesson._id} className="wd-lesson p-3 ps-1">
                     <BsGripVertical className="me-2 fs-3" /> {lesson.name} 
                     
-                    <LessonControlButtons 
+                    
+                    {currentUser?.role === "FACULTY" && ( 
+                      <LessonControlButtons 
                         moduleId={module._id}
                         lessonId={lesson._id}
                         deleteLesson={(moduleId, lessonId) => {
                           dispatch(deleteLesson({ moduleId, lessonId }));
                         }
                       }
-                      />
+                      /> )}
                   </ListGroup.Item>
                 ))}
                 </ListGroup>) 

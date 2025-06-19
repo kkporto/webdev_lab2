@@ -1,5 +1,4 @@
-import { FaCheckCircle, FaCircle, FaSearch } from "react-icons/fa";
-import { IoEllipsisVertical } from "react-icons/io5";
+import { FaCheckCircle } from "react-icons/fa";
 import { BsPlus } from "react-icons/bs";
 import { TfiWrite } from "react-icons/tfi";
 import {ListGroup} from 'react-bootstrap';
@@ -12,95 +11,24 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteAssignment } from "./reducer";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { InputGroup,FormControl } from 'react-bootstrap';
+import { InputGroup } from 'react-bootstrap';
 
 import { FaTrash } from "react-icons/fa";
+import { Button } from "react-bootstrap";
 
-
-
-export function GreenCheckmark() {
-  return (
-    <span className="me-1 position-relative">
-      <FaCheckCircle style={{ top: "2px" }} className="text-success me-1 position-absolute fs-5" />
-      <FaCircle className="text-white me-1 fs-6" />
-    </span>);}
-
-
-
-
-export function LessonControlButtons() {
-  return (
-    <div className="float-end">
-      <GreenCheckmark />
-      <IoEllipsisVertical className="fs-4" />
-    </div> );}
-
-
-export function ModuleControlButtons() {
-  return (
-    <div className="float-end">
-      {/* <GreenCheckmark />
-      <IoEllipsisVertical className="fs-4" /> */}
-      <BsPlus className="bs" />
-    </div> );}
-
+import { ProtectedRouteFaculty } from "../../Account/ProtectedRoute";
 
 
 export function GreenHwButton() {
   return (
     <span className="me-1 position-relative">
+      
+      <BsGripVertical className="fs-4 me-1" />
       <TfiWrite style={{ top: "2px" }} className="text-success me-1 position-absolutetfi" />
     </span>);}
 
 
 
-export function RedWord() {
-  return (
-  <p className="wd-fg-color-red">
-         Multiple Modules  
-    <span className="wd-fg-color-black">   | Not available until </span>
-  </p>
-
-  );}
-
-
-import { FaPlus } from "react-icons/fa6";
-import { Button } from "react-bootstrap";
-export function Modules() {
- return (
-   <div id="wd-modules-controls" className="mb-4 d-flex gap-3">
-     <Button variant="danger" size="lg" className="me-1 float-end" id="wd-add-module-btn">
-       <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-       Module
-     </Button>
-     <Button variant="secondary" size="lg" className="me-1 float-end" id="wd-add-module-btn2">
-       <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-       Assignment
-     </Button>
-
-</div>
-);}
-
-
-
-
-
-export function Search(){
-  return (
-    <div className="d-flex me-2 mb-4">
-      <InputGroup size="lg" style={{ maxWidth: "300px" }}>
-        <InputGroup.Text>
-          <FaSearch />
-        </InputGroup.Text>
-        <FormControl
-          type="text"
-          placeholder="Search ..."
-          className="border-start-0"
-        />
-      </InputGroup>
-    </div>
-  );
-}
 
 
 export function AssignmentsDataDriven() {
@@ -112,7 +40,7 @@ export function AssignmentsDataDriven() {
   const assignments = useSelector((state: any) => state.assignmentsReducer)
     .filter((a: any) => a.course === cid);
 
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  // const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const handleDelete = (assignmentId: string) => {
     const confirm = window.confirm("Are you sure you want to delete this assignment?");
@@ -131,18 +59,21 @@ export function AssignmentsDataDriven() {
             <Form.Control placeholder="Search ..." />
           </InputGroup>
 
-          <div>
+
+                  <ProtectedRouteFaculty>
+            {/* {currentUser?.role === "FACULTY" && (
+          <div> */}
             <Button variant="secondary" className="me-2">
               <BsPlus className="me-1" /> Group
             </Button>
-            {currentUser?.role !== "Student" && (
+              
               <Link to={`/Kambaz/Courses/${cid}/new/AssignmentEditor`}>
                 <Button variant="danger" id="wd-new-assignment-button">
                   <BsPlus className="me-1" /> Assignment
                 </Button>
               </Link>
-            )}
-          </div>
+            
+         </ProtectedRouteFaculty>
         </div>
 
         <div className="bg-light px-3 py-2 mb-2 border rounded d-flex justify-content-between align-items-center">
@@ -169,7 +100,6 @@ export function AssignmentsDataDriven() {
                   <div className="d-flex justify-content-between">
                     <div className="d-flex">
                       <div className="me-3 d-flex align-items-start">
-                        <BsGripVertical className="fs-4 me-1" />
                         <GreenHwButton />
                       </div>
                       <div>
@@ -186,10 +116,12 @@ export function AssignmentsDataDriven() {
                     </div>
 
                     <div className="d-flex align-items-start">
+                      
+                  <ProtectedRouteFaculty>
+
                       <BsThreeDotsVertical className="bs me-2" />
                       <FaCheckCircle className="text-success mt-1 me-2" />
 
-                      {currentUser?.role !== "Student" && (
                         <Button
                           variant="no outline"
                           size="sm"
@@ -200,7 +132,9 @@ export function AssignmentsDataDriven() {
                         >
                         <FaTrash className="text-danger float-end mt-1"  />
                         </Button>
-                      )}
+                    
+                    </ProtectedRouteFaculty>
+
                     </div>
                   </div>
                 </ListGroup.Item>
@@ -212,3 +146,5 @@ export function AssignmentsDataDriven() {
     </div>
   );
 }
+
+
