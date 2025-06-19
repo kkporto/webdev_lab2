@@ -68,42 +68,48 @@ export default function Dashboard(
   return (
     
   <div id="wd-dashboard"> 
-  <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
+  <div className="d-flex justify-content-between align-items-center mb-3">
+  <h1 className="mb-0" id="wd-dashboard-title">Dashboard</h1> 
+  
+  <button onClick={() => setCount(count + 1)}
+          className="btn btn-primary me-2"
+          id="wd-counter-up-click">Enrollments</button>
+  
+  </div>
 
       <ProtectedRouteFaculty>
-      <h5>New Course
-          <button className="btn btn-primary float-end"
-                  id="wd-add-new-course-click"
-                  onClick={() => {
-                    addNewCourse();}} > 
-                  Add         
+      <hr />
+        <h5>New Course
+            <button className="btn btn-primary float-end"
+                    id="wd-add-new-course-click"
+                    onClick={() => {
+                      addNewCourse();}} > 
+                    Add         
+            </button>
+
+
+          <button className="btn btn-warning float-end me-2"
+                  onClick={updateCourse} id="wd-update-course-click">
+            Update
           </button>
 
+        </h5>
+        
+        <br />
+        <FormControl value={course.name} className="mb-2" 
+              onChange={(e) => setCourse({ ...course, name: e.target.value }) } />
+        <FormControl as="textarea" value={course.description} rows={3}
+              onChange={(e) => setCourse({ ...course, description: e.target.value }) } />
+        <hr />
 
-        <button className="btn btn-warning float-end me-2"
-                onClick={updateCourse} id="wd-update-course-click">
-          Update
-        </button>
+      </ProtectedRouteFaculty>
 
-      </h5>
-      
-      <br />
-      <FormControl value={course.name} className="mb-2" 
-             onChange={(e) => setCourse({ ...course, name: e.target.value }) } />
-      <FormControl as="textarea" value={course.description} rows={3}
-             onChange={(e) => setCourse({ ...course, description: e.target.value }) } />
-      <hr />
-
-
-
- <button onClick={() => setCount(count + 1)}
-              className="btn btn-primary"
-              id="wd-counter-up-click">Enrollments</button>
+   
 
 
       {Math.floor(count % 2) !== 0 && (
       <div>
-      <p>The counter is odd.</p>
+      {/* <p>The counter is odd.</p> */}
 
         <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
         <div id="wd-dashboard-courses">
@@ -188,8 +194,9 @@ export default function Dashboard(
       {Math.floor(count % 2) === 0 && ( 
       <div>
 
-      <p>The counter is even.</p>
-        <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
+      {/* <p>The counter is even.</p> */}
+        <h2 id="wd-dashboard-published">Published Courses 
+          ({enrollments.filter((enrollment: any) => enrollment.user === currentUser._id).length})</h2> <hr />
         <div id="wd-dashboard-courses">
           <Row xs={1} md={5} className="g-4">
             {courses
@@ -254,7 +261,7 @@ export default function Dashboard(
 
 
 
-</ProtectedRouteFaculty>
+{/* </ProtectedRouteFaculty> */}
  
 </div>
 
