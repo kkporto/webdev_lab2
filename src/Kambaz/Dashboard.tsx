@@ -58,6 +58,13 @@ export default function Dashboard(
     }));
   };
 
+  const handleEnroll = (courseId: string) => {
+  dispatch(addEnrollment({
+    user: currentUser._id,
+    course: courseId
+    }));
+  };
+
   return (
     
   <div id="wd-dashboard"> 
@@ -119,24 +126,18 @@ export default function Dashboard(
               ) ? (
               <Button onClick={(event) => {
                       event.preventDefault();
-                      dispatch(deleteEnrollment({
-                        courseId: course._id,
-                        currentUser: currentUser._id
-                      }));
+                      handleUnenroll(course._id)
                     }} 
                 
                 variant="danger" className="btn float-left mt-3 ms-3" >
                   Unenroll
               </Button> ) : (
               <Button 
-              // onClick={(event) => {
-              //         event.preventDefault();
-              //         dispatch(addEnrollment({
-              //           user: currentUser._id,
-              //           course: course._id,
-              //           name: course.name,
-              //         }));
-                            // }}
+                  onClick={(event) => {
+                      event.preventDefault();
+                      handleEnroll(course._id) 
+                  }}
+                  
                     variant="success" className="btn float-left mt-3 ms-3" >
                  Enroll
               </Button>

@@ -10,9 +10,6 @@ const enrollmentsSlice = createSlice({
   reducers: {
 
 
-
-
-
     addEnrollment: (state, { payload }) => {
     const { user, course } = payload;
 
@@ -23,15 +20,34 @@ const enrollmentsSlice = createSlice({
     if (!alreadyEnrolled) {
         const newEnrollment = {
         _id: uuidv4(),
-        course,
         user,
+        course,
         };
-        // state.enrollments.push(newEnrollment);
-        
-      state.enrollments = [...state.enrollments, newEnrollment] as any;
-    }
 
+        state.enrollments.push(newEnrollment); 
+      }
     },
+
+
+    // addEnrollment: (state, { payload }) => {
+    // const { user, course } = payload;
+
+    // const alreadyEnrolled = state.enrollments.some(
+    //     (e) => e.user === user && e.course === course
+    // );
+
+    // if (!alreadyEnrolled) {
+    //     const newEnrollment = {
+    //     _id: uuidv4(),
+    //     course,
+    //     user,
+    //     };
+    //     // state.enrollments.push(newEnrollment);
+        
+    //   state.enrollments = [...state.enrollments, newEnrollment] as any;
+    // }
+
+    // },
 
     deleteEnrollment: (state, { payload }) => {
     
