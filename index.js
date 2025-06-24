@@ -11,7 +11,7 @@ import UserRoutes from "./Kambaz/Users/routes.js";
 
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 
-// import ModuleRoutes from "./Kambaz/Modules/routes.js";
+import ModuleRoutes from "./Kambaz/Modules/routes.js";
 
 const app = express()
 
@@ -55,7 +55,7 @@ Hello(app)
 UserRoutes(app)
 
 CourseRoutes(app);
-// ModuleRoutes(app);
+ModuleRoutes(app);
 
 
 app.listen(process.env.PORT || 4000)
