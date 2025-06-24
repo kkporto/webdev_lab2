@@ -46,11 +46,11 @@ export default function UserRoutes(app) {
   
   const profile = async (req, res) => {
     const currentUser = req.session["currentUser"];
-    console.log(currentUser._id);
     if (!currentUser) {
       res.sendStatus(401);
       return;
     }
+    console.log(currentUser._id);
     res.json(currentUser);
   }; 
 

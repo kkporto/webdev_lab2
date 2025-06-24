@@ -18,7 +18,7 @@ export default function CourseRoutes(app) {
     if (userId === "current") {
       const currentUser = req.session["currentUser"];
       if (!currentUser) {
-        res.sendStatus(401).json({ message: "Issue with course." });
+        res.sendStatus(403); //.json({ message: "Issue with course." });
         return;
       }
       userId = currentUser._id;
