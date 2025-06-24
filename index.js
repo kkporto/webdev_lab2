@@ -9,7 +9,7 @@ import cors from "cors"
 
 import UserRoutes from "./Kambaz/Users/routes.js";
 
-// import CourseRoutes from "./Kambaz/Courses/routes.js";
+import CourseRoutes from "./Kambaz/Courses/routes.js";
 
 // import ModuleRoutes from "./Kambaz/Modules/routes.js";
 
@@ -54,7 +54,7 @@ Lab5(app)
 Hello(app)
 UserRoutes(app)
 
-// CourseRoutes(app);
+CourseRoutes(app);
 // ModuleRoutes(app);
 
 
