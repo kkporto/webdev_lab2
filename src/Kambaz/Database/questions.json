@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "Q101",
+    "quizId": "1",
+    "course": "RS101",
+    "type": "Multiple Choice",
+    "title": "Combustion Chamber Pressure",
+    "points": 5,
+    "prompt": "Which parameter primarily determines chamber pressure in a liquid-rocket engine?",
+    "choices": [
+      { "id": "a", "text": "Propellant mixture ratio", "correct": false },
+      { "id": "b", "text": "Pump outlet pressure",      "correct": true  },
+      { "id": "c", "text": "Nozzle expansion ratio",    "correct": false },
+      { "id": "d", "text": "Oxidizer temperature",      "correct": false }
+    ],
+    "answer": false,
+    "blanks": [""],
+    "answers": [],
+
+    "studentGuesses": [{"studentId": "", 
+                    "studentMC": "a", 
+                    "studentBlank": "", 
+                    "studentTF": false,
+                    "studentPoints": 0}]
+  },
+  {
+    "_id": "Q102",
+    "quizId": "1",
+    "course": "RS101",
+    "type": "True/False",
+    "title": "Thrust and Mass Flow",
+    "points": 2,
+    "prompt": "Rocket thrust is directly proportional to propellant mass-flow rate.",
+    "choices": [],
+    "answer": true,
+    "blanks": [""],
+    "answers": [],
+    
+    "studentGuesses": [{"studentId": "", 
+                    "studentMC": "a", 
+                    "studentBlank": "", 
+                    "studentTF": false,
+                    "studentPoints": 0}]
+  },
+  {
+    "_id": "Q103",
+    "quizId": "1",
+    "course": "RS101",
+    "type": "Fill in the Blank",
+    "title": "Specific-Impulse Units",
+    "points": 3,
+    "prompt": "Specific impulse is commonly expressed in ___ seconds.",
+    "choices": [],
+    "answer": false,
+    "blanks": [""],
+    "answers": ["seconds", "s"],
+
+    "studentGuesses": [{"studentId": "", 
+                    "studentMC": "a", 
+                    "studentBlank": "", 
+                    "studentTF": false,
+                    "studentPoints": 0}]
+        
+
+  }
+]
