@@ -1,9 +1,11 @@
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { Card } from "react-bootstrap";
+import { Button} from "react-bootstrap";
+import { Link } from "react-router";
 
 export function ShowQuizAnswers() {
-  const { aid } = useParams();  // quiz id
+  const { cid, aid } = useParams();  // quiz id
   const { questions } = useSelector((state: any) => state.questionsReducer);
   const { currentUser } = useSelector((state: any) => state.accountReducer);
 
@@ -106,7 +108,19 @@ export function ShowQuizAnswers() {
 
 
         );
+
       })}
+
+    <Link to={`/Kambaz/Courses/:${cid}/Quizzes/`}>
+
+      <Button
+        size="lg"
+        className="mt-5"
+        variant="danger"
+      >
+          Back to Quizzes
+      </Button>
+      </Link>
     </div>
   );
 }
