@@ -2,7 +2,8 @@ import * as dao from "./dao.js";
 import * as courseDao from "../Courses/dao.js";
 
 import * as modulesDao from "../Modules/dao.js";
-import * as assignmentsDao from "../Modules/dao.js"
+import * as assignmentsDao from "../Assignments/dao.js"
+import * as quizsDao from "../Quizs/dao.js"
 
 
 export default function CourseRoutes(app) {
@@ -65,6 +66,7 @@ export default function CourseRoutes(app) {
 
 // assignments functions with impact on course
     app.get("/api/courses/:courseId/assignments", (req, res) => {
+    console.log("assignmentsDao keys:", Object.keys(assignmentsDao));
     const { courseId } = req.params;
     const assignments = assignmentsDao.findAssignmentsForCourse(courseId);
     res.json(assignments);
@@ -80,6 +82,28 @@ export default function CourseRoutes(app) {
     const newAssignment = assignmentsDao.createAssignment(assignment);
     res.send(newAssignment);
   });
+
+
+// quizs functions with impact on course
+    app.get("/api/courses/:courseId/quizs", (req, res) => {
+    console.log("quizsDao keys:", Object.keys(quizsDao));
+    const { courseId } = req.params;
+    const quizs = quizsDao.findAssignmentsForCourse(courseId);
+    res.json(quizs);
+  });
+
+
+    app.post("/api/courses/:courseId/quizs", (req, res) => {
+    const { courseId } = req.params;
+    const quiz = {
+      ...req.body,
+      course: courseId,
+    };
+    const newQuiz = quizsDao.createQuiz(quiz);
+    res.send(newQuiz);
+  });
+
+
 
 
 
